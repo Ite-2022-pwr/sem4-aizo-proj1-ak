@@ -1,6 +1,10 @@
 package sort
 
-import "golang.org/x/exp/constraints"
+import (
+	"math/rand"
+
+	"golang.org/x/exp/constraints"
+)
 
 type PivotChoosingMethod[T constraints.Ordered] func(array []T, low, high int) T
 
@@ -32,14 +36,19 @@ func partition[T constraints.Ordered](array []T, low, high int, getPivot PivotCh
   return j
 }
 
-func GetPivotLow[T constraints.Ordered](array []T, low, high int) T {
+func GetPivotLow[T constraints.Ordered](array []T, low, _ int) T {
   return array[low]
 }
 
-func GetPivotHigh[T constraints.Ordered](array []T, low, high int) T {
+func GetPivotHigh[T constraints.Ordered](array []T, _, high int) T {
   return array[high]
 }
 
 func GetPivotMiddle[T constraints.Ordered](array []T, low, high int) T {
   return array[(low + high) / 2]
 }
+
+func GetPivotRandom[T constraints.Ordered](array []T, low, high int) T {
+  return array[rand.Intn(high - low + 1) + low]
+}
+
