@@ -1,4 +1,4 @@
-// Package main is an entry point to the program
+// Package main stanowi punkt wejścia do całego programu
 package main
 
 import (
@@ -41,15 +41,18 @@ func main() {
   // test sortmeter
   arr := []float64{-3.14, 0.65, 5.76, -6.38, 7.12, 4.01}
   sortMeter := analysis.NewSortMeter(arr)
-  sortedArr := sortMeter.QuickSort("lewy")
+  sortedArr := sortMeter.QuickSortAnalysis("lewy")
   fmt.Println("QuickSort:", sortedArr)
   fmt.Println(sortMeter.Data)
   fmt.Println("Tablica posortowana:", analysis.IsArraySorted(sortedArr))
 
-  sortedArr = sortMeter.InsertionSort()
+  sortedArr = sortMeter.InsertionSortAnalysis()
   fmt.Println("InsertionSort:", sortedArr)
 
-  sortedArr = sortMeter.ShellSort("hibbard")
+  sortedArr = sortMeter.HeapSortAnalysis()
+  fmt.Println("HeapSort:", sortedArr)
+
+  sortedArr = sortMeter.ShellSortAnalysis("shell")
   fmt.Println("ShellSort:", sortedArr)
 
 }

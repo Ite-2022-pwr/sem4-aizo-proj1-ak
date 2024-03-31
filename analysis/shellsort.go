@@ -9,8 +9,10 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
-func (sm *SortMeter[T]) ShellSort(gapCalculatingFormula string) []T {
-  array := sm.GetDataCopy()
+// ShellSortAnalysis mierzy czas sortowania Shella.
+// Parametr gapCalculatingFormula musi przyjmować jedną z wartości: "shell", "franklazarus" lub "hibbard". 
+func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
+  array := sa.GetDataCopy()
 
   var calculateGap sort.GapCalculatingFormula
   switch gapCalculatingFormula {
@@ -25,7 +27,7 @@ func (sm *SortMeter[T]) ShellSort(gapCalculatingFormula string) []T {
   }
  
   start := time.Now()
-  prompt := fmt.Sprintf("Sortowanie Shella dla typu danych %T", array)
+  prompt := fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s) dla typu danych %T", gapCalculatingFormula, array)
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
   defer utils.PrintTimeElapsed(start, prompt)
 

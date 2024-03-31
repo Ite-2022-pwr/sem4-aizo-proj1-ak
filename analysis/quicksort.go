@@ -9,11 +9,10 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
-// QuickSort sortuje zawartość tablicy SortMeter.Data metodą sortowania szybkiego
-// operując na kopii tej tablicy. Zwraca posortowaną tablicę.
-// Parametr pivot musi zawierać jedną z wartości: "lewy", "prawy", "środkowy" lub "losowy"
-func (sm *SortMeter[T]) QuickSort(pivotType string) []T {
-  array := sm.GetDataCopy()
+// QuickSortAnalysis mierzy czas sortowania szybkiego.
+// Parametr pivot musi przyjmować jedną z wartości: "lewy", "prawy", "środkowy" lub "losowy".
+func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
+  array := sa.GetDataCopy()
 
   var getPivot sort.PivotChoosingMethod[T]
   switch pivotType {
@@ -34,7 +33,7 @@ func (sm *SortMeter[T]) QuickSort(pivotType string) []T {
   log.Println("[*] Rozpoczynanie:", prompt)
   defer utils.PrintTimeElapsed(start, prompt)
 
-  sort.QuickSort(array, 0, sm.DataLength - 1, getPivot)
+  sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
 
   return array
 }
