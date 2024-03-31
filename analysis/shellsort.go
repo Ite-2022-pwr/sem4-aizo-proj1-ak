@@ -14,8 +14,13 @@ import (
 func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   array := sa.GetDataCopy()
 
+  log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
   log.Println("Rozmiar Tablicy:", utils.YellowColor(sa.DataLength))
-  log.Println("Tablica (max pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  if sa.DataLength > 20 {
+    log.Println("Tablica (pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  } else {
+    log.Println("Tablica:", utils.YellowColor(array))
+  }
 
   var calculateGap sort.GapCalculatingFormula
   switch gapCalculatingFormula {
@@ -30,7 +35,7 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   }
  
   start := time.Now()
-  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s) dla typu danych %T", gapCalculatingFormula, array))
+  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s)", gapCalculatingFormula))
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
 
   sort.ShellSort(array, calculateGap)

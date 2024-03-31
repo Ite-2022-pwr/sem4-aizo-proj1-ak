@@ -1,7 +1,6 @@
 package analysis
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -13,11 +12,16 @@ import (
 func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
   array := sa.GetDataCopy()
 
+  log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
   log.Println("Rozmiar Tablicy:", utils.YellowColor(sa.DataLength))
-  log.Println("Tablica (max pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  if sa.DataLength > 20 {
+    log.Println("Tablica (pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  } else {
+    log.Println("Tablica:", utils.YellowColor(array))
+  }
 
   start := time.Now()
-  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie przez wstawianie dla typu danych %T", array))
+  prompt := utils.BlueColor("Sortowanie przez wstawianie")
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
 
   sort.InsertionSort(array) 

@@ -14,8 +14,13 @@ import (
 func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   array := sa.GetDataCopy()
 
+  log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
   log.Println("Rozmiar Tablicy:", utils.YellowColor(sa.DataLength))
-  log.Println("Tablica (max pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  if sa.DataLength > 20 {
+    log.Println("Tablica (pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  } else {
+    log.Println("Tablica:", utils.YellowColor(array))
+  }
 
   var getPivot sort.PivotIndexChoosingMethod[T]
   switch pivotType {
@@ -32,7 +37,7 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   }
 
   start := time.Now()
-  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie szybkie (pivot: %s) dla typu danych %T", pivotType, array))
+  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie szybkie (pivot: %s)", pivotType))
   log.Println("[*] Rozpoczynanie:", prompt)
 
   sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
