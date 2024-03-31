@@ -29,9 +29,16 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   start := time.Now()
   prompt := fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s) dla typu danych %T", gapCalculatingFormula, array)
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
-  defer utils.PrintTimeElapsed(start, prompt)
 
   sort.ShellSort(array, calculateGap)
+
+  utils.PrintTimeElapsed(start, prompt)
+
+  if IsArraySorted(array) {
+    log.Println("[+] Tablica posortowana poprawnie")
+  } else {
+    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
+  }
 
   return array
 }

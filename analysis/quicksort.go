@@ -14,7 +14,7 @@ import (
 func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   array := sa.GetDataCopy()
 
-  var getPivot sort.PivotChoosingMethod[T]
+  var getPivot sort.PivotIndexChoosingMethod[T]
   switch pivotType {
   case "lewy":
     getPivot = sort.GetPivotLow
@@ -31,9 +31,16 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   start := time.Now()
   prompt := fmt.Sprintf("Sortowanie szybkie (pivot: %s) dla typu danych %T", pivotType, array)
   log.Println("[*] Rozpoczynanie:", prompt)
-  defer utils.PrintTimeElapsed(start, prompt)
 
   sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
+
+  utils.PrintTimeElapsed(start, prompt)
+
+  if IsArraySorted(array) {
+    log.Println("[+] Tablica posortowana poprawnie")
+  } else {
+    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
+  }
 
   return array
 }

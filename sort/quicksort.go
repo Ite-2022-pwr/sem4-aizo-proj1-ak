@@ -6,12 +6,12 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// PivotChoosingMethod to typ funkcyjny określający funkcję służącą do wybierania osi
-// dla sortowania szybkiego
-type PivotChoosingMethod[T constraints.Ordered] func(array []T, low, high int) T
+// PivotIndexChoosingMethod to typ funkcyjny określający funkcję służącą do wybierania osi
+// dla sortowania szybkiego. Zwraca index wybranej osi.
+type PivotIndexChoosingMethod[T constraints.Ordered] func(array []T, low, high int) int
 
 // QuickSort mierzy czas sortowania szybkiego
-func QuickSort[T constraints.Ordered](array []T, low, high int, getPivot PivotChoosingMethod[T]) {
+func QuickSort[T constraints.Ordered](array []T, low, high int, getPivot PivotIndexChoosingMethod[T]) {
   if low < high {
     partitionIndex := partition(array, low, high, getPivot)
     QuickSort(array, low, partitionIndex - 1, getPivot)
@@ -19,43 +19,41 @@ func QuickSort[T constraints.Ordered](array []T, low, high int, getPivot PivotCh
   }
 }
 
-func partition[T constraints.Ordered](array []T, low, high int, getPivot PivotChoosingMethod[T]) int {
-  pivot := getPivot(array, low, high)
+func partition[T constraints.Ordered](array []T, low, high int, getPivot PivotIndexChoosingMethod[T]) int {
+  pivotIndex := getPivot(array, low, high)
+  array[high], array[pivotIndex] = array[pivotIndex], array[high]
+  pivot := array[high]
 
-  i, j := low, high
-  
-  for i < j {
-    for array[j] > pivot {
-      j--
-    }
-    for array[i] < pivot {
-      i++
-    }
-
-    if i < j {
-      array[i], array[j] = array[j], array[i]
-    }
-  }
-  return j
+  i := low - 1
+	for j := low; j < high; j++ {
+		if array[j] <= pivot {
+			i++
+			array[i], array[j] = array[j], array[i]
+		}
+	}
+	i++
+	array[i], array[high] = array[high], array[i]
+	
+  return i
 }
 
 // GetPivotLow wybiera jako oś lewy element z danego zakresu
-func GetPivotLow[T constraints.Ordered](array []T, low, _ int) T {
-  return array[low]
+func GetPivotLow[T constraints.Ordered](array []T, low, _ int) int {
+  return low
 }
 
 // GetPivotHigh wybiera jako oś prawy element z danego zakresu
-func GetPivotHigh[T constraints.Ordered](array []T, _, high int) T {
-  return array[high]
+func GetPivotHigh[T constraints.Ordered](array []T, _, high int) int {
+  return high
 }
 
 // GetPivotMiddle wybiera jako oś środkowy element z danego zakresu
-func GetPivotMiddle[T constraints.Ordered](array []T, low, high int) T {
-  return array[(low + high) / 2]
+func GetPivotMiddle[T constraints.Ordered](array []T, low, high int) int {
+  return (low + high) / 2
 }
 
 // GetPivotRandom wbyiera jako oś losowy element z danego zakresu
-func GetPivotRandom[T constraints.Ordered](array []T, low, high int) T {
-  return array[rand.Intn(high - low + 1) + low]
+func GetPivotRandom[T constraints.Ordered](array []T, low, high int) int {
+  return rand.Intn(high - low + 1) + low
 }
 

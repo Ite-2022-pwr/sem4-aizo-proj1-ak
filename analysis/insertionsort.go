@@ -16,9 +16,16 @@ func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
   start := time.Now()
   prompt := fmt.Sprintf("Sortowanie przez wstawianie dla typu danych %T", array)
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
-  defer utils.PrintTimeElapsed(start, prompt)
 
   sort.InsertionSort(array) 
+
+  utils.PrintTimeElapsed(start, prompt)
+
+  if IsArraySorted(array) {
+    log.Println("[+] Tablica posortowana poprawnie")
+  } else {
+    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
+  }
 
   return array
 }
