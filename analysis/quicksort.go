@@ -14,6 +14,8 @@ import (
 func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   array := sa.GetDataCopy()
 
+  log.Println("Tablica:", utils.YellowColor(array))
+
   var getPivot sort.PivotIndexChoosingMethod[T]
   switch pivotType {
   case "lewy":
@@ -25,22 +27,18 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   case "losowy":
     getPivot = sort.GetPivotRandom
   default:
-    log.Fatalf("[!!] Błąd: Nieznany typ pivota dla QuickSort: %s. Dopuszczalne: lewy, prawy, środkowy, losowy", pivotType)
+    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznany typ pivota dla QuickSort: %s. Dopuszczalne: lewy, prawy, środkowy, losowy", pivotType)))
   }
 
   start := time.Now()
-  prompt := fmt.Sprintf("Sortowanie szybkie (pivot: %s) dla typu danych %T", pivotType, array)
+  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie szybkie (pivot: %s) dla typu danych %T", pivotType, array))
   log.Println("[*] Rozpoczynanie:", prompt)
 
   sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
 
   utils.PrintTimeElapsed(start, prompt)
 
-  if IsArraySorted(array) {
-    log.Println("[+] Tablica posortowana poprawnie")
-  } else {
-    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
-  }
+  AssertSortedArray(array)
 
   return array
 }

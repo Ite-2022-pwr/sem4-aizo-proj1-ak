@@ -10,7 +10,7 @@ import (
 
 func main() {
   // test sort analysis
-  arrayInt := generator.GenerateRandomArrayInt(10, 10)
+  arrayInt := generator.GenerateRandomArrayInt(10, 100)
   fmt.Println("Array:", arrayInt)
 
   sortMeter := analysis.NewSortMeter(arrayInt)

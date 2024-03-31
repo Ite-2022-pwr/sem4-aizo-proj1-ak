@@ -14,6 +14,8 @@ import (
 func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   array := sa.GetDataCopy()
 
+  log.Println("Tablica:", utils.YellowColor(array))
+
   var calculateGap sort.GapCalculatingFormula
   switch gapCalculatingFormula {
   case "shell":
@@ -23,22 +25,18 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   case "hibbard":
     gapCalculatingFormula, calculateGap = "Hibbarda", sort.CalculateHibbardGap
   default:
-    log.Fatalf("[!!] Błąd: Nieznana formuła wyboru odstępu: %s. Dopuszczalne: shell, franklazarus, hibbard", gapCalculatingFormula)
+    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznana formuła wyboru odstępu: %s. Dopuszczalne: shell, franklazarus, hibbard", gapCalculatingFormula)))
   }
  
   start := time.Now()
-  prompt := fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s) dla typu danych %T", gapCalculatingFormula, array)
+  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s) dla typu danych %T", gapCalculatingFormula, array))
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
 
   sort.ShellSort(array, calculateGap)
 
   utils.PrintTimeElapsed(start, prompt)
 
-  if IsArraySorted(array) {
-    log.Println("[+] Tablica posortowana poprawnie")
-  } else {
-    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
-  }
+  AssertSortedArray(array)
 
   return array
 }

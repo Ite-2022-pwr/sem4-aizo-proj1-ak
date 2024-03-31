@@ -2,6 +2,7 @@
 package utils
 
 import (
+	"fmt"
 	"log"
 	"time"
 )
@@ -9,5 +10,6 @@ import (
 // TimeElapsed wypisuje ile czasu minęło od danego momentu
 func PrintTimeElapsed(start time.Time, prompt string) {
   elapsed := time.Since(start)
-  log.Printf("[+] %s zajęło %v\n", prompt, elapsed)
+  elapsedStr := GreenColor(fmt.Sprintf("%v", elapsed))
+  log.Printf("[+] %s zajęło %s\n", prompt, elapsedStr)
 }

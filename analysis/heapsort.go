@@ -12,20 +12,18 @@ import (
 // HeapSortAnalysis mierzy czas sortowania przez kopcowanie.
 func (sa *SortAnalyzer[T]) HeapSortAnalysis() []T {
   array := sa.GetDataCopy()
- 
+
+  log.Println("Tablica:", utils.YellowColor(array))
+
   start := time.Now()
-  prompt := fmt.Sprintf("Sortowanie przez kopcowanie dla typu danych %T", array)
+  prompt := utils.BlueColor(fmt.Sprintf("Sortowanie przez kopcowanie dla typu danych %T", array))
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
 
   sort.HeapSort(array)
 
   utils.PrintTimeElapsed(start, prompt)
 
-  if IsArraySorted(array) {
-    log.Println("[+] Tablica posortowana poprawnie")
-  } else {
-    log.Fatal("[!!] Tablica nie została posortowana poprawnie!")
-  }
+  AssertSortedArray(array)
 
   return array
 }
