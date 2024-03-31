@@ -1,9 +1,12 @@
+// Package main is an entry point to the program
 package main
 
 import (
 	"fmt"
 
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/measurement"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/sort"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 func main() {
@@ -34,4 +37,13 @@ func main() {
   a2 := []float64{-3.14, 0.65, 5.76, -6.38, 7.12, 4.01}
   sort.ShellSort(a2, sort.CalculateFrankLazarusGap)
   fmt.Println(a2)
+
+  // test sortmeter
+  arr := []float64{-3.14, 0.65, 5.76, -6.38, 7.12, 4.01}
+  sortMeter := measurement.NewSortMeter(arr)
+  sortedArr := sortMeter.QuickSort("lewy")
+  fmt.Printf("QuickSort: %v\n", sortedArr)
+  fmt.Println(sortMeter.Data)
+  fmt.Println("Tablica posortowana:", utils.IsArraySorted(sortedArr))
+
 }

@@ -1,7 +1,9 @@
+// Package sort zawiera funkcje sortujące
 package sort
 
 import "golang.org/x/exp/constraints"
 
+// HeapSort sortuje tablicę metodą sortowania przez kopcowanie
 func HeapSort[T constraints.Ordered](array []T) {
   buildHeap(array)
 
@@ -11,6 +13,7 @@ func HeapSort[T constraints.Ordered](array []T) {
   }
 }
 
+// buildHeap buduje kopiec z tablicy
 func buildHeap[T constraints.Ordered](array []T) {
   n := len(array)
   for i := n / 2; i >= 0; i-- {

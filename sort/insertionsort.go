@@ -2,6 +2,7 @@ package sort
 
 import "golang.org/x/exp/constraints"
 
+// InsertionSort sortuje tablicę metodą przez wstawianie
 func InsertionSort[T constraints.Ordered](array []T) {
   n := len(array)
   for i := 0; i < n; i++ {
