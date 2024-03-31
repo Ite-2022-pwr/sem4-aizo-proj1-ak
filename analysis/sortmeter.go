@@ -1,5 +1,5 @@
 // Package measurement służy do przeprowadzania pomiarów algorytmów sortujących z pakietu sort
-package measurement
+package analysis
 
 import "golang.org/x/exp/constraints"
 

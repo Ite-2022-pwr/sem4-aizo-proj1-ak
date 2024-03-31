@@ -4,13 +4,13 @@ package main
 import (
 	"fmt"
 
-	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/measurement"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/analysis"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/sort"
-	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 func main() {
   a := []int{2, 3, 1, 6}
+
   // sort.InsertionSort(a)
   sort.QuickSort(a, 0, len(a) - 1, sort.GetPivotHigh)
   fmt.Println(a)
@@ -40,10 +40,16 @@ func main() {
 
   // test sortmeter
   arr := []float64{-3.14, 0.65, 5.76, -6.38, 7.12, 4.01}
-  sortMeter := measurement.NewSortMeter(arr)
+  sortMeter := analysis.NewSortMeter(arr)
   sortedArr := sortMeter.QuickSort("lewy")
-  fmt.Printf("QuickSort: %v\n", sortedArr)
+  fmt.Println("QuickSort:", sortedArr)
   fmt.Println(sortMeter.Data)
-  fmt.Println("Tablica posortowana:", utils.IsArraySorted(sortedArr))
+  fmt.Println("Tablica posortowana:", analysis.IsArraySorted(sortedArr))
+
+  sortedArr = sortMeter.InsertionSort()
+  fmt.Println("InsertionSort:", sortedArr)
+
+  sortedArr = sortMeter.ShellSort("hibbard")
+  fmt.Println("ShellSort:", sortedArr)
 
 }

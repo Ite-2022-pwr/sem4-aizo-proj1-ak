@@ -10,7 +10,7 @@ import (
 // dla sortowania szybkiego
 type PivotChoosingMethod[T constraints.Ordered] func(array []T, low, high int) T
 
-// QuickSort sortuje tablicę metodą sortowania szybkiego
+// QuickSort mierzy czas sortowania szybkiego
 func QuickSort[T constraints.Ordered](array []T, low, high int, getPivot PivotChoosingMethod[T]) {
   if low < high {
     partitionIndex := partition(array, low, high, getPivot)

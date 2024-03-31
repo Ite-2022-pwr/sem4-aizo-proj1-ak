@@ -30,14 +30,20 @@ func ShellSort[T constraints.Ordered](array []T, calculateGap GapCalculatingForm
   }
 }
 
-// CalculateShellGap oblicza odstęp zgodnie ze wzorem: floor(N / 2^k)
+// CalculateShellGap oblicza odstęp zgodnie ze wzorem: floor(N / 2^k).
 // Autor: Shell, 1959r.
 func CalculateShellGap(n, k int) int {
   return int(math.Floor(float64(n) / math.Pow(2.0, float64(k))))
 }
 
-// CalculateFrankLazarusGap oblicza odstęp zgodnie zgodnie wzorem: 2 * floor(N / 2^(k + 1)) + 1 
+// CalculateFrankLazarusGap oblicza odstęp zgodnie zgodnie wzorem: 2 * floor(N / 2^(k + 1)) + 1. 
 // Autorzy: Frank, Lazarus, 1960r.
 func CalculateFrankLazarusGap(n, k int) int {
   return 2 * int(math.Floor(float64(n) / math.Pow(2.0, float64(k + 1)))) + 1
+}
+
+// CalculateHibbardGap oblicza odsęp zgodnie ze wzorem: 2^k - 1.
+// Autor: Hibbard, 1963r.
+func CalculateHibbardGap(_, k int) int {
+  return int(math.Pow(2, float64(k))) - 1
 }
