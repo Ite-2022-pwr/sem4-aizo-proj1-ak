@@ -26,4 +26,12 @@ func main() {
   sort.QuickSort(b, 0, len(b) - 1, sort.GetPivotMiddle)
   // sort.HeapSort(b)
   fmt.Println(b)
+
+  a1 := []int32{-12, 4, -3, 14, 7, 0, 2, 9}
+  sort.ShellSort(a1, sort.CalculateShellGap)
+  fmt.Println(a1)
+
+  a2 := []float64{-3.14, 0.65, 5.76, -6.38, 7.12, 4.01}
+  sort.ShellSort(a2, sort.CalculateFrankLazarusGap)
+  fmt.Println(a2)
 }
