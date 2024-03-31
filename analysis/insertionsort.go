@@ -13,7 +13,8 @@ import (
 func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
   array := sa.GetDataCopy()
 
-  log.Println("Tablica:", utils.YellowColor(array))
+  log.Println("Rozmiar Tablicy:", utils.YellowColor(sa.DataLength))
+  log.Println("Tablica (max pierwsze 20 elementów):", utils.YellowColor(array[:20]))
 
   start := time.Now()
   prompt := utils.BlueColor(fmt.Sprintf("Sortowanie przez wstawianie dla typu danych %T", array))

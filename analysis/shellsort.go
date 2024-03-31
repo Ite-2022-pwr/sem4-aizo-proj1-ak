@@ -14,7 +14,8 @@ import (
 func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   array := sa.GetDataCopy()
 
-  log.Println("Tablica:", utils.YellowColor(array))
+  log.Println("Rozmiar Tablicy:", utils.YellowColor(sa.DataLength))
+  log.Println("Tablica (max pierwsze 20 elementów):", utils.YellowColor(array[:20]))
 
   var calculateGap sort.GapCalculatingFormula
   switch gapCalculatingFormula {

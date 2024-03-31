@@ -10,23 +10,23 @@ import (
 
 func main() {
   // test sort analysis
-  arrayInt := generator.GenerateRandomArrayInt(10, 100)
-  fmt.Println("Array:", arrayInt)
+  arrayInt := generator.GenerateRandomArrayInt(1000000, 1000)
+  fmt.Println("Array:", arrayInt[:20])
 
   sortMeter := analysis.NewSortMeter(arrayInt)
   // sortedArr := sortMeter.QuickSortAnalysis("lewy")
   // sortedArr := sortMeter.QuickSortAnalysis("prawy")
   // sortedArr := sortMeter.QuickSortAnalysis("środkowy")
   sortedArr := sortMeter.QuickSortAnalysis("losowy")
-  fmt.Println("QuickSort:", sortedArr)
+  fmt.Println("QuickSort:", sortedArr[:20])
 
   sortedArr = sortMeter.InsertionSortAnalysis()
-  fmt.Println("InsertionSort:", sortedArr)
+  // fmt.Println("InsertionSort:", sortedArr)
 
   sortedArr = sortMeter.HeapSortAnalysis()
-  fmt.Println("HeapSort:", sortedArr)
+  // fmt.Println("HeapSort:", sortedArr)
 
   sortedArr = sortMeter.ShellSortAnalysis("shell")
-  fmt.Println("ShellSort:", sortedArr)
+  // fmt.Println("ShellSort:", sortedArr)
 
 }
