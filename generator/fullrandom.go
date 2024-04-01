@@ -11,6 +11,8 @@ import (
 func GenerateRandomArrayInt(n, mod int) []int {
   array := make([]int, n)
   
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
@@ -25,6 +27,8 @@ func GenerateRandomArrayInt(n, mod int) []int {
 func GenerateRandomArrayInt32(n int, mod int32) []int32 {
   array := make([]int32, n)
   
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
@@ -39,6 +43,8 @@ func GenerateRandomArrayInt32(n int, mod int32) []int32 {
 func GenerateRandomArrayInt64(n int, mod int64) []int64 {
   array := make([]int64, n)
   
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
@@ -52,6 +58,8 @@ func GenerateRandomArrayInt64(n int, mod int64) []int64 {
 func GenerateRandomArrayFloat32(n int) []float32 {
   array := make([]float32, n)
   
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
@@ -66,6 +74,8 @@ func GenerateRandomArrayFloat32(n int) []float32 {
 func GenerateRandomArrayFloat64(n int) []float64 {
   array := make([]float64, n)
   
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
@@ -79,6 +89,8 @@ func GenerateRandomArrayFloat64(n int) []float64 {
 func GenerateRandomArrayByte(n int) []byte {
   array := make([]byte, n)
 
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   if _, err := rng.Read(array); err != nil {
@@ -90,7 +102,8 @@ func GenerateRandomArrayByte(n int) []byte {
 
 const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-func generateRandomString(length int) string {
+// GenerateRandomString generuje losowy ciąg znaków o zadanej długości
+func GenerateRandomString(length int) string {
   byteArray := make([]byte, length)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -106,10 +119,12 @@ func generateRandomString(length int) string {
 func GenerateRandomArrayString(n, maxLength int) []string {
   array := make([]string, n)
 
+  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
-    array[i] = generateRandomString(rng.Intn(maxLength - 1) + 1)
+    array[i] = GenerateRandomString(rng.Intn(maxLength - 1) + 1)
   }
 
   return array

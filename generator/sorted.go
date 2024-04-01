@@ -2,12 +2,17 @@ package generator
 
 import (
 	"math/rand"
+	"slices"
 	"time"
+
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/sort"
 )
 
-// GenerateAscendingSortedInt genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedInt(n int) []int {
+// GenerateAscendingSortedArrayInt genruje rosnący ciąg liczb [0, n)
+func GenerateAscendingSortedArrayInt(n int) []int {
   array := make([]int, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = i
@@ -16,9 +21,11 @@ func GenerateAscendingSortedInt(n int) []int {
   return array
 }
 
-// GenerateDescendingSortedInt genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedInt(n int) []int {
+// GenerateDescendingSortedArrayInt genruje malejący ciąg liczb od n - 1 do 0
+func GenerateDescendingSortedArrayInt(n int) []int {
   array := make([]int, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = n - i - 1
@@ -27,9 +34,11 @@ func GenerateDescendingSortedInt(n int) []int {
   return array
 }
 
-// GenerateAscendingSortedInt32 genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedInt32(n int) []int32 {
+// GenerateAscendingSortedArrayInt32 genruje rosnący ciąg liczb [0, n)
+func GenerateAscendingSortedArrayInt32(n int) []int32 {
   array := make([]int32, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = int32(i)
@@ -38,9 +47,11 @@ func GenerateAscendingSortedInt32(n int) []int32 {
   return array
 }
 
-// GenerateDescendingSortedInt64 genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedInt32(n int) []int32 {
+// GenerateDescendingSortedArrayInt32 genruje malejący ciąg liczb od n - 1 do 0
+func GenerateDescendingSortedArrayInt32(n int) []int32 {
   array := make([]int32, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = int32(n - i - 1)
@@ -50,9 +61,11 @@ func GenerateDescendingSortedInt32(n int) []int32 {
 }
 
 
-// GenerateAscendingSortedInt64 genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedInt64(n int) []int64 {
+// GenerateAscendingSortedArrayInt64 genruje rosnący ciąg liczb [0, n)
+func GenerateAscendingSortedArrayInt64(n int) []int64 {
   array := make([]int64, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = int64(i)
@@ -61,9 +74,11 @@ func GenerateAscendingSortedInt64(n int) []int64 {
   return array
 }
 
-// GenerateDescendingSortedInt64 genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedInt64(n int) []int64 {
+// GenerateDescendingSortedArrayInt64 genruje malejący ciąg liczb od n - 1 do 0
+func GenerateDescendingSortedArrayInt64(n int) []int64 {
   array := make([]int64, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   for i := 0; i < n; i++ {
     array[i] = int64(n - i - 1)
@@ -72,10 +87,12 @@ func GenerateDescendingSortedInt64(n int) []int64 {
   return array
 }
 
-// GenerateAscendingSortedFloat32 generuje posortowany rosnąco
+// GenerateAscendingSortedArrayFloat32 generuje posortowany rosnąco
 // ciąg liczb typu float32
-func GenerateAscendingSortedFloat32(n int) []float32 {
+func GenerateAscendingSortedArrayFloat32(n int) []float32 {
   array := make([]float32, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -89,10 +106,12 @@ func GenerateAscendingSortedFloat32(n int) []float32 {
   return array
 }
 
-// GenerateDescendingSortedFloat32 generuje posortowany malejąco
+// GenerateDescendingSortedArrayFloat32 generuje posortowany malejąco
 // ciąg liczb typu float32
-func GenerateDescendingSortedFloat32(n int) []float32 {
+func GenerateDescendingSortedArrayFloat32(n int) []float32 {
   array := make([]float32, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -107,10 +126,12 @@ func GenerateDescendingSortedFloat32(n int) []float32 {
 }
 
 
-// GenerateAscendingSortedFloat64 generuje posortowany rosnąco
+// GenerateAscendingSortedArrayFloat64 generuje posortowany rosnąco
 // ciąg liczb typu float64
-func GenerateAscendingSortedFloat64(n int) []float64 {
+func GenerateAscendingSortedArrayFloat64(n int) []float64 {
   array := make([]float64, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -124,10 +145,12 @@ func GenerateAscendingSortedFloat64(n int) []float64 {
   return array
 }
 
-// GenerateDescendingSortedFloat64 generuje posortowany malejąco
+// GenerateDescendingSortedArrayFloat64 generuje posortowany malejąco
 // ciąg liczb typu float64
-func GenerateDescendingSortedFloat64(n int) []float64 {
+func GenerateDescendingSortedArrayFloat64(n int) []float64 {
   array := make([]float64, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -137,6 +160,86 @@ func GenerateDescendingSortedFloat64(n int) []float64 {
   for i := 0; i < n; i++ {
     array[i] = float64(n - i) - floatSeed
   }
+
+  return array
+}
+
+// GenerateAscendingSortedArrayByte generuje posortowany rosnąco
+// ciąg bajtów o rozmiarze n
+func GenerateAscendingSortedArrayByte(n int) []byte {
+  array := make([]byte, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
+  if n <= 256 {
+    for i := 0; i < n; i++ {
+      array[i] = byte(i)
+    }
+  } else {
+    times := n / 255 + 1
+    val := 0
+    for i := 0; i < n; i += times {
+      for j := 0; j < times && i + j < n; j++ {
+        array[i + j] = byte(val)
+      }
+      if val < 256 {
+        val++
+      }
+    }
+  }
+
+  return array
+}
+
+// GenerateDescendingSortedArrayByte generuje posortowany malejąco
+// ciąg bajtów o rozmiarze n
+func GenerateDescendingSortedArrayByte(n int) []byte {
+  array := make([]byte, n)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
+  if n <= 256 {
+    for i := 0; i < n; i++ {
+      array[i] = byte(n - i - 1)
+    }
+  } else {
+    times := n / 255 + 1
+    val := 255
+    for i := 0; i < n; i += times {
+      for j := 0; j < times && i + j < n; j++ {
+        array[i + j] = byte(val)
+      }
+      if val > 0 {
+        val--
+      }
+    }
+  }
+
+  return array
+}
+
+// GenerateAscendingSortedArrayString generuje posortowaną rosnąco
+// tablicę ciągów znaków o rozmiarze n
+func GenerateAscendingSortedArrayString(n int) []string {
+  array := GenerateRandomArrayString(n, 10)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
+  sort.QuickSort(array, 0, n - 1, sort.GetPivotHigh)
+
+  return array
+}
+
+// GenerateDescendingSortedArrayString generuje posortowaną malejąco
+// tablicę ciągów znakóœ o rozmiarze n
+func GenerateDescendingSortedArrayString(n int) []string {
+  array := GenerateRandomArrayString(n, 10)
+
+  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+
+  sort.QuickSort(array, 0, n - 1, sort.GetPivotHigh)
+
+  slices.Reverse(array)
 
   return array
 }
