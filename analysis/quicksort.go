@@ -44,7 +44,7 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
 
   utils.PrintTimeElapsed(start, prompt)
 
-  AssertSortedArray(array)
+  AssertSortedAscendingArray(array)
 
   return array
 }

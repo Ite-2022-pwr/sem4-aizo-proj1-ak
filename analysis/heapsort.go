@@ -28,7 +28,7 @@ func (sa *SortAnalyzer[T]) HeapSortAnalysis() []T {
 
   utils.PrintTimeElapsed(start, prompt)
 
-  AssertSortedArray(array)
+  AssertSortedAscendingArray(array)
 
   return array
 }

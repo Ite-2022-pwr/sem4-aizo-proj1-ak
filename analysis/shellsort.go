@@ -42,7 +42,7 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
 
   utils.PrintTimeElapsed(start, prompt)
 
-  AssertSortedArray(array)
+  AssertSortedAscendingArray(array)
 
   return array
 }

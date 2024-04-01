@@ -28,7 +28,7 @@ func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
 
   utils.PrintTimeElapsed(start, prompt)
 
-  AssertSortedArray(array)
+  AssertSortedAscendingArray(array)
 
   return array
 }
