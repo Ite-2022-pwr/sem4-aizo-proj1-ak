@@ -66,6 +66,6 @@ func main() {
   a := generator.GenerateAscendingSortedArrayFloat32(10, true)
   utils.SaveArray("dupa.txt", a)
 
-  fh := utils.NewFileHandler("dupa.txt")
-  fmt.Println(fh.Data)
+  fh := utils.NewInputFileHandler("dupa.txt")
+  fmt.Println(fh.TryParseFloat32())
 }
