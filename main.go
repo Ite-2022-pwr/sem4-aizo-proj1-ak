@@ -10,10 +10,14 @@ import (
 
 func main() {
   // test sort analysis
-  arrayInt := generator.GenerateRandomArrayInt(10000, 1000)
+  n := 100000
+  // array := generator.GenerateRandomArrayInt(n, 1000)
+  // array := generator.GenerateRandomArrayByte(n)
+  // array := generator.GenerateRandomArrayFloat64(n)
+  array := generator.GenerateRandomArrayString(n, 10)
   // fmt.Println("Array:", arrayInt[:20])
 
-  sortMeter := analysis.NewSortMeter(arrayInt)
+  sortMeter := analysis.NewSortMeter(array)
   // sortedArr := sortMeter.QuickSortAnalysis("lewy")
   sortedArr := sortMeter.QuickSortAnalysis("prawy")
   // sortedArr := sortMeter.QuickSortAnalysis("środkowy")
