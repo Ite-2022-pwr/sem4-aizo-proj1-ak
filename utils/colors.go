@@ -7,4 +7,5 @@ var (
   GreenColor = color.New(color.FgGreen).SprintFunc()
   RedColor = color.New(color.FgRed).SprintFunc()
   YellowColor = color.New(color.FgYellow).SprintFunc()
+  MagentaColor = color.New(color.FgMagenta).SprintFunc()
 )

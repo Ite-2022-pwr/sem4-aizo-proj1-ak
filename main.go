@@ -6,6 +6,7 @@ import (
 
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/analysis"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/generator"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 func main() {
@@ -61,4 +62,10 @@ func main() {
   fmt.Println("part float64:", generator.GeneratePartiallySortedArrayFloat64(10, 33, true))
   fmt.Println("part byte:", generator.GeneratePartiallySortedArrayByte(10, 33, true))
   fmt.Println("part string:", generator.GeneratePartiallySortedArrayString(10, 33, true))
+
+  a := generator.GenerateAscendingSortedArrayFloat32(10, true)
+  utils.SaveArray("dupa.txt", a)
+
+  fh := utils.NewFileHandler("dupa.txt")
+  fmt.Println(fh.Data)
 }
