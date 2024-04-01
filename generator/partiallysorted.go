@@ -1,18 +1,25 @@
 package generator
 
 import (
+	"fmt"
+	"log"
 	"math/rand"
 	"time"
+
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
-func GeneratePartiallySortedArrayInt(n, sortedPercentage int) []int {
+// GeneratePartiallySortedArrayInt generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayInt(n, sortedPercentage int, verbose bool) []int {
   array := make([]int, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayInt(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayInt(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -28,15 +35,17 @@ func GeneratePartiallySortedArrayInt(n, sortedPercentage int) []int {
   return array
 }
 
-
-func GeneratePartiallySortedArrayInt32(n, sortedPercentage int) []int32 {
+// GeneratePartiallySortedArrayInt32 generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayInt32(n, sortedPercentage int, verbose bool) []int32 {
   array := make([]int32, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayInt32(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayInt32(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -52,15 +61,17 @@ func GeneratePartiallySortedArrayInt32(n, sortedPercentage int) []int32 {
   return array
 }
 
-
-func GeneratePartiallySortedArrayInt64(n, sortedPercentage int) []int64 {
+// GeneratePartiallySortedArrayInt64 generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayInt64(n, sortedPercentage int, verbose bool) []int64 {
   array := make([]int64, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayInt64(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayInt64(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -76,15 +87,17 @@ func GeneratePartiallySortedArrayInt64(n, sortedPercentage int) []int64 {
   return array
 }
 
-
-func GeneratePartiallySortedArrayFloat32(n, sortedPercentage int) []float32 {
+// GeneratePartiallySortedArrayFloat32 generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayFloat32(n, sortedPercentage int, verbose bool) []float32 {
   array := make([]float32, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayFloat32(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayFloat32(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -100,15 +113,17 @@ func GeneratePartiallySortedArrayFloat32(n, sortedPercentage int) []float32 {
   return array
 }
 
-
-func GeneratePartiallySortedArrayFloat64(n, sortedPercentage int) []float64 {
+// GeneratePartiallySortedArrayFloat64 generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayFloat64(n, sortedPercentage int, verbose bool) []float64 {
   array := make([]float64, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayFloat64(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayFloat64(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -124,15 +139,17 @@ func GeneratePartiallySortedArrayFloat64(n, sortedPercentage int) []float64 {
   return array
 }
 
-
-func GeneratePartiallySortedArrayByte(n, sortedPercentage int) []byte {
+// GeneratePartiallySortedArrayByte generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayByte(n, sortedPercentage int, verbose bool) []byte {
   array := make([]byte, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayByte(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayByte(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -148,15 +165,17 @@ func GeneratePartiallySortedArrayByte(n, sortedPercentage int) []byte {
   return array
 }
 
-
-func GeneratePartiallySortedArrayString(n, sortedPercentage int) []string {
+// GeneratePartiallySortedArrayString generuje częściowo posortowaną tablicę
+func GeneratePartiallySortedArrayString(n, sortedPercentage int, verbose bool) []string {
   array := make([]string, n)
 
   sortedNum := n * sortedPercentage / 100
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v%% tablicy typu %v o rozmiarze %v", utils.YellowColor(sortedPercentage), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej w %v tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%v%%", sortedPercentage)), utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
-  sortedPart := GenerateAscendingSortedArrayString(sortedNum)
+  sortedPart := GenerateAscendingSortedArrayString(sortedNum, false)
   copy(array[:sortedNum], sortedPart)
 
   for i := sortedNum; i < n; i++ {

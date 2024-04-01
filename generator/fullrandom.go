@@ -2,16 +2,21 @@
 package generator
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
 	"time"
+
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 // GenerateRandomArrayInt generuje n losowych liczb typu int modulo mod
-func GenerateRandomArrayInt(n, mod int) []int {
+func GenerateRandomArrayInt(n, mod int, verbose bool) []int {
   array := make([]int, n)
   
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -24,10 +29,12 @@ func GenerateRandomArrayInt(n, mod int) []int {
 
 
 // GenerateRandomArrayInt32 generuje n losowych liczb typu int32 modulo mod
-func GenerateRandomArrayInt32(n int, mod int32) []int32 {
+func GenerateRandomArrayInt32(n int, mod int32, verbose bool) []int32 {
   array := make([]int32, n)
   
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -40,10 +47,12 @@ func GenerateRandomArrayInt32(n int, mod int32) []int32 {
 
 
 // GenerateRandomArrayInt64 generuje n losowych liczb typu int64 modulo mod
-func GenerateRandomArrayInt64(n int, mod int64) []int64 {
+func GenerateRandomArrayInt64(n int, mod int64, verbose bool) []int64 {
   array := make([]int64, n)
   
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -55,10 +64,12 @@ func GenerateRandomArrayInt64(n int, mod int64) []int64 {
 }
 
 // GenerateRandomArrayFloat32 generuje n losowych liczb typu float32
-func GenerateRandomArrayFloat32(n int) []float32 {
+func GenerateRandomArrayFloat32(n int, verbose bool) []float32 {
   array := make([]float32, n)
   
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -71,10 +82,12 @@ func GenerateRandomArrayFloat32(n int) []float32 {
 
 
 // GenerateRandomArrayFloat64 generuje n losowych liczb typu float64
-func GenerateRandomArrayFloat64(n int) []float64 {
+func GenerateRandomArrayFloat64(n int, verbose bool) []float64 {
   array := make([]float64, n)
   
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -86,10 +99,12 @@ func GenerateRandomArrayFloat64(n int) []float64 {
 }
 
 // GenerateRandomArrayByte generuje n losowych bajtów
-func GenerateRandomArrayByte(n int) []byte {
+func GenerateRandomArrayByte(n int, verbose bool) []byte {
   array := make([]byte, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -116,10 +131,12 @@ func GenerateRandomString(length int) string {
 }
 
 // GenerateRandomArrayString generuje n losowych ciągów znaków o maksymalnej długości maxLength
-func GenerateRandomArrayString(n, maxLength int) []string {
+func GenerateRandomArrayString(n, maxLength int, verbose bool) []string {
   array := make([]string, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie losowej tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 

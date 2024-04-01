@@ -1,18 +1,23 @@
 package generator
 
 import (
+	"fmt"
+	"log"
 	"math/rand"
 	"slices"
 	"time"
 
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/sort"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 // GenerateAscendingSortedArrayInt genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedArrayInt(n int) []int {
+func GenerateAscendingSortedArrayInt(n int, verbose bool) []int {
   array := make([]int, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = i
@@ -22,10 +27,12 @@ func GenerateAscendingSortedArrayInt(n int) []int {
 }
 
 // GenerateDescendingSortedArrayInt genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedArrayInt(n int) []int {
+func GenerateDescendingSortedArrayInt(n int, verbose bool) []int {
   array := make([]int, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = n - i - 1
@@ -35,10 +42,12 @@ func GenerateDescendingSortedArrayInt(n int) []int {
 }
 
 // GenerateAscendingSortedArrayInt32 genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedArrayInt32(n int) []int32 {
+func GenerateAscendingSortedArrayInt32(n int, verbose bool) []int32 {
   array := make([]int32, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = int32(i)
@@ -48,10 +57,12 @@ func GenerateAscendingSortedArrayInt32(n int) []int32 {
 }
 
 // GenerateDescendingSortedArrayInt32 genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedArrayInt32(n int) []int32 {
+func GenerateDescendingSortedArrayInt32(n int, verbose bool) []int32 {
   array := make([]int32, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = int32(n - i - 1)
@@ -62,10 +73,12 @@ func GenerateDescendingSortedArrayInt32(n int) []int32 {
 
 
 // GenerateAscendingSortedArrayInt64 genruje rosnący ciąg liczb [0, n)
-func GenerateAscendingSortedArrayInt64(n int) []int64 {
+func GenerateAscendingSortedArrayInt64(n int, verbose bool) []int64 {
   array := make([]int64, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = int64(i)
@@ -75,10 +88,12 @@ func GenerateAscendingSortedArrayInt64(n int) []int64 {
 }
 
 // GenerateDescendingSortedArrayInt64 genruje malejący ciąg liczb od n - 1 do 0
-func GenerateDescendingSortedArrayInt64(n int) []int64 {
+func GenerateDescendingSortedArrayInt64(n int, verbose bool) []int64 {
   array := make([]int64, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   for i := 0; i < n; i++ {
     array[i] = int64(n - i - 1)
@@ -89,10 +104,12 @@ func GenerateDescendingSortedArrayInt64(n int) []int64 {
 
 // GenerateAscendingSortedArrayFloat32 generuje posortowany rosnąco
 // ciąg liczb typu float32
-func GenerateAscendingSortedArrayFloat32(n int) []float32 {
+func GenerateAscendingSortedArrayFloat32(n int, verbose bool) []float32 {
   array := make([]float32, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -108,10 +125,12 @@ func GenerateAscendingSortedArrayFloat32(n int) []float32 {
 
 // GenerateDescendingSortedArrayFloat32 generuje posortowany malejąco
 // ciąg liczb typu float32
-func GenerateDescendingSortedArrayFloat32(n int) []float32 {
+func GenerateDescendingSortedArrayFloat32(n int, verbose bool) []float32 {
   array := make([]float32, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -128,10 +147,12 @@ func GenerateDescendingSortedArrayFloat32(n int) []float32 {
 
 // GenerateAscendingSortedArrayFloat64 generuje posortowany rosnąco
 // ciąg liczb typu float64
-func GenerateAscendingSortedArrayFloat64(n int) []float64 {
+func GenerateAscendingSortedArrayFloat64(n int, verbose bool) []float64 {
   array := make([]float64, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -147,10 +168,12 @@ func GenerateAscendingSortedArrayFloat64(n int) []float64 {
 
 // GenerateDescendingSortedArrayFloat64 generuje posortowany malejąco
 // ciąg liczb typu float64
-func GenerateDescendingSortedArrayFloat64(n int) []float64 {
+func GenerateDescendingSortedArrayFloat64(n int, verbose bool) []float64 {
   array := make([]float64, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -166,10 +189,12 @@ func GenerateDescendingSortedArrayFloat64(n int) []float64 {
 
 // GenerateAscendingSortedArrayByte generuje posortowany rosnąco
 // ciąg bajtów o rozmiarze n
-func GenerateAscendingSortedArrayByte(n int) []byte {
+func GenerateAscendingSortedArrayByte(n int, verbose bool) []byte {
   array := make([]byte, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   if n <= 256 {
     for i := 0; i < n; i++ {
@@ -193,10 +218,12 @@ func GenerateAscendingSortedArrayByte(n int) []byte {
 
 // GenerateDescendingSortedArrayByte generuje posortowany malejąco
 // ciąg bajtów o rozmiarze n
-func GenerateDescendingSortedArrayByte(n int) []byte {
+func GenerateDescendingSortedArrayByte(n int, verbose bool) []byte {
   array := make([]byte, n)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   if n <= 256 {
     for i := 0; i < n; i++ {
@@ -220,10 +247,12 @@ func GenerateDescendingSortedArrayByte(n int) []byte {
 
 // GenerateAscendingSortedArrayString generuje posortowaną rosnąco
 // tablicę ciągów znaków o rozmiarze n
-func GenerateAscendingSortedArrayString(n int) []string {
-  array := GenerateRandomArrayString(n, 10)
+func GenerateAscendingSortedArrayString(n int, verbose bool) []string {
+  array := GenerateRandomArrayString(n, 10, false)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   sort.QuickSort(array, 0, n - 1, sort.GetPivotHigh)
 
@@ -232,10 +261,12 @@ func GenerateAscendingSortedArrayString(n int) []string {
 
 // GenerateDescendingSortedArrayString generuje posortowaną malejąco
 // tablicę ciągów znakóœ o rozmiarze n
-func GenerateDescendingSortedArrayString(n int) []string {
-  array := GenerateRandomArrayString(n, 10)
+func GenerateDescendingSortedArrayString(n int, verbose bool) []string {
+  array := GenerateRandomArrayString(n, 10, false)
 
-  // log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  if verbose {
+    log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
+  }
 
   sort.QuickSort(array, 0, n - 1, sort.GetPivotHigh)
 
