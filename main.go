@@ -24,10 +24,15 @@ func main() {
   switch os.Args[1] {
   case "help":
     PrintGeneralHelp(0)
+  case "verify":
+    cmd.VerifySorting()
   case "generate":
     ParseGenerateOptions(os.Args[2:])
+  case "run":
+    cmd.Run()
   default:
-    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
+    log.Println(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
+    PrintGeneralHelp(1)
   }
 }
 
@@ -49,17 +54,17 @@ func ParseGenerateOptions(args []string) {
 // PrintGeneralHelp wypisuje generalną pomoc i sposób użycia programu.
 func PrintGeneralHelp(exitCode int) {
   fmt.Printf("Sposób użycia:\n$ %v <cmd> [options]\n\n", os.Args[0])
+  fmt.Println("\tverify\t\t\t\tweryfikacja poprawności zaimplementowanych algorytmów sortowania")
   fmt.Println("\tgenerate <typ danych> <rozmiar>\tgenerowanie plików z losowymi danymi wejściowymi")
+  fmt.Println("\trun [options]\t\t\turuchamianie wybranego algorytmu sortowania")
   fmt.Println("\thelp\t\t\t\twyświetlanie tej wiadomości")
 
   fmt.Println()
-  fmt.Println("Aby wyświetlić więcej informacji nt. danej komendy należy wpisać:")
-  fmt.Printf("$ %v <cmd> -help\n", os.Args[0])
-  fmt.Println()
   fmt.Println("Przykłady:")
   fmt.Printf("$ %v generate float32 100\n", os.Args[0])
+  fmt.Printf("$ %v run -alg=quick -type=string -generate=100000 -pivot=losowy\n", os.Args[0])
+  fmt.Printf("$ %v run -alg=quick -type=string -pivot=prawy -input-file=data/input/input_int_1000000.txt\n", os.Args[0])
+  fmt.Println()
 
-  fmt.Println(exitCode)
-
-  os.Exit(0)
+  os.Exit(exitCode)
 }

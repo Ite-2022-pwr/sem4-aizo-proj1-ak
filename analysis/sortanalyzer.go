@@ -22,8 +22,8 @@ func (sm *SortAnalyzer[T]) GetDataCopy() []T {
   return newArray
 }
 
-// NewSortMeter zwraca nowy obiekt SortMeter utworzony na podstawie zadanej tablicy
-func NewSortMeter[T constraints.Ordered](array []T) *SortAnalyzer[T] {
+// NewSortAnalyzer zwraca nowy obiekt SortMeter utworzony na podstawie zadanej tablicy
+func NewSortAnalyzer[T constraints.Ordered](array []T) *SortAnalyzer[T] {
   return &SortAnalyzer[T]{
     Data: array,
     DataLength: len(array),

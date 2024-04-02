@@ -20,9 +20,9 @@ func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
     log.Println("Tablica:", utils.YellowColor(array))
   }
 
-  start := time.Now()
   prompt := utils.BlueColor("Sortowanie przez wstawianie")
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
+  start := time.Now()
 
   sort.InsertionSort(array) 
 

@@ -31,12 +31,13 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
   case "hibbard":
     gapCalculatingFormula, calculateGap = "Hibbarda", sort.CalculateHibbardGap
   default:
-    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznana formuła wyboru odstępu: %s. Dopuszczalne: shell, franklazarus, hibbard", gapCalculatingFormula)))
+    log.Println(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznana formuła wyboru odstępu: %s. Dopuszczalne: shell, franklazarus, hibbard", gapCalculatingFormula)))
+    return nil
   }
  
-  start := time.Now()
   prompt := utils.BlueColor(fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s)", gapCalculatingFormula))
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
+  start := time.Now()
 
   sort.ShellSort(array, calculateGap)
 

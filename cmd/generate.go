@@ -41,10 +41,10 @@ func GenerateInputFile(dataType string, size int) {
     data := generator.GenerateRandomArrayInt64(size, 100000, true)
     utils.SaveArray(path, data)
   case "float32":
-    data := generator.GenerateRandomArrayFloat32(size, true)
+    data := generator.GenerateRandomArrayFloat32(size, 10000, true)
     utils.SaveArray(path, data)
   case "float64":
-    data := generator.GenerateRandomArrayFloat64(size, true)
+    data := generator.GenerateRandomArrayFloat64(size, 100000, true)
     utils.SaveArray(path, data)
   case "byte":
     data := generator.GenerateRandomArrayByte(size, true)

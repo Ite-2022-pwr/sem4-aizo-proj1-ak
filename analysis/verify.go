@@ -35,7 +35,13 @@ func AssertSortedAscendingArray[T constraints.Ordered](array []T) {
   if IsArraySortedAscending(array) {
     log.Println(utils.GreenColor("[+] Tablica posortowana rosnąco poprawnie"))
   } else {
-    log.Fatal(utils.RedColor("[!!] Tablica nie została posortowana rosnąco poprawnie!"))
+    log.Println(utils.RedColor("[!!] Tablica nie została posortowana rosnąco poprawnie!"))
+  }
+
+  if len(array) > 20 {
+    log.Println("Tablica (pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  } else {
+    log.Println("Tablica:", utils.YellowColor(array))
   }
 }
 
@@ -46,6 +52,12 @@ func AssertSortedDescendingArray[T constraints.Ordered](array []T) {
   if IsArraySortedDescending(array) {
     log.Println(utils.GreenColor("[+] Tablica posortowana malejąco poprawnie"))
   } else {
-    log.Fatal(utils.RedColor("[!!] Tablica nie została posortowana malejąco poprawnie!"))
+    log.Println(utils.RedColor("[!!] Tablica nie została posortowana malejąco poprawnie!"))
+  }
+
+  if len(array) > 20 {
+    log.Println("Tablica (pierwsze 20 elementów):", utils.YellowColor(array[:20]))
+  } else {
+    log.Println("Tablica:", utils.YellowColor(array))
   }
 }

@@ -64,7 +64,7 @@ func GenerateRandomArrayInt64(n int, mod int64, verbose bool) []int64 {
 }
 
 // GenerateRandomArrayFloat32 generuje n losowych liczb typu float32
-func GenerateRandomArrayFloat32(n int, verbose bool) []float32 {
+func GenerateRandomArrayFloat32(n int, mul float32, verbose bool) []float32 {
   array := make([]float32, n)
   
   if verbose {
@@ -74,7 +74,7 @@ func GenerateRandomArrayFloat32(n int, verbose bool) []float32 {
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
-    array[i] = rng.Float32()
+    array[i] = rng.Float32() * mul
   }
 
   return array
@@ -82,7 +82,7 @@ func GenerateRandomArrayFloat32(n int, verbose bool) []float32 {
 
 
 // GenerateRandomArrayFloat64 generuje n losowych liczb typu float64
-func GenerateRandomArrayFloat64(n int, verbose bool) []float64 {
+func GenerateRandomArrayFloat64(n int, mul float64, verbose bool) []float64 {
   array := make([]float64, n)
   
   if verbose {
@@ -92,7 +92,7 @@ func GenerateRandomArrayFloat64(n int, verbose bool) []float64 {
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
   for i := 0; i < n; i++ {
-    array[i] = rng.Float64()
+    array[i] = rng.Float64() * mul
   }
 
   return array

@@ -33,12 +33,13 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
   case "losowy":
     getPivot = sort.GetPivotRandom
   default:
-    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznany typ pivota dla QuickSort: %s. Dopuszczalne: lewy, prawy, środkowy, losowy", pivotType)))
+    log.Println(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznany typ pivota dla QuickSort: %s. Dopuszczalne: lewy, prawy, środkowy, losowy", pivotType)))
+    return nil
   }
 
-  start := time.Now()
   prompt := utils.BlueColor(fmt.Sprintf("Sortowanie szybkie (pivot: %s)", pivotType))
   log.Println("[*] Rozpoczynanie:", prompt)
+  start := time.Now()
 
   sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
 

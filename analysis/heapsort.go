@@ -20,9 +20,9 @@ func (sa *SortAnalyzer[T]) HeapSortAnalysis() []T {
     log.Println("Tablica:", utils.YellowColor(array))
   }
 
-  start := time.Now()
   prompt := utils.BlueColor("Sortowanie przez kopcowanie")
   log.Printf("[*] Rozpoczynanie: %s\n", prompt)
+  start := time.Now()
 
   sort.HeapSort(array)
 
