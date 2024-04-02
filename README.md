@@ -24,4 +24,12 @@ Projekt, za zgodą prowadzącego, został zaimplementowany w języku programowan
 
 ```
 $ go build -o aizo1
+$ ./aizo1
 ```
+
+Program można również uruchomić bez wyraźnego budowania projektu:
+
+```
+$ go run .
+```
+

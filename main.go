@@ -3,69 +3,63 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strconv"
 
-	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/analysis"
-	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/generator"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/cmd"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
 func main() {
-  // test sort analysis
-  n := 1000
-  array := generator.GenerateRandomArrayInt(n, 1000, true)
-  // array := generator.GenerateRandomArrayByte(n, true)
-  // array := generator.GenerateRandomArrayFloat64(n, true)
-  // array := generator.GenerateRandomArrayString(n, 10, true)
-  // fmt.Println("Array:", arrayInt[:20])
+  fmt.Println(utils.MagentaColor("AZO - zadanie projektowe nr 1"))
+  fmt.Println((utils.MagentaColor("Badanie efektywności wybranych algorytmów sortowania ze względu na złożoność obliczeniową")))
+  fmt.Println(utils.BlueColor("Autor: Artur Kręgiel, 2024r."))
+  fmt.Println()
 
-  sortMeter := analysis.NewSortMeter(array)
-  // sortedArr := sortMeter.QuickSortAnalysis("lewy")
-  sortedArr := sortMeter.QuickSortAnalysis("prawy")
-  // sortedArr := sortMeter.QuickSortAnalysis("środkowy")
-  // sortedArr := sortMeter.QuickSortAnalysis("losowy")
-  fmt.Println("QuickSort:", sortedArr[0])
+  if len(os.Args) < 2 {
+    PrintGeneralHelp(1)
+  }
 
-  sortedArr = sortMeter.InsertionSortAnalysis()
-  // fmt.Println("InsertionSort:", sortedArr)
+  switch os.Args[1] {
+  case "help":
+    PrintGeneralHelp(0)
+  case "generate":
+    ParseGenerateOptions(os.Args[2:])
+  default:
+    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
+  }
+}
 
-  sortedArr = sortMeter.HeapSortAnalysis()
-  // fmt.Println("HeapSort:", sortedArr)
+// ParseGenerateOptions przetwarza argumenty polecenia generate
+func ParseGenerateOptions(args []string) {
+  if len(args) != 2 {
+    cmd.PrintGenerateHelp(1)
+  }
 
-  sortedArr = sortMeter.ShellSortAnalysis("shell")
-  // fmt.Println("ShellSort:", sortedArr)
+  dataType := args[0]
+  n, err := strconv.Atoi(args[1])
+  if err != nil {
+    log.Fatal(utils.RedColor(fmt.Sprintf("[!!] Błąd konwersji: %v", err)))
+  }
 
-  fmt.Println("asc int:", generator.GenerateAscendingSortedArrayInt(10, true))
-  fmt.Println("desc int:", generator.GenerateDescendingSortedArrayInt(10, true))
-  fmt.Println("asc int32:", generator.GenerateAscendingSortedArrayInt32(10, true))
-  fmt.Println("desc int32:", generator.GenerateDescendingSortedArrayInt32(10, true))
-  fmt.Println("asc int64:", generator.GenerateAscendingSortedArrayInt64(10, true))
-  fmt.Println("desc int64:", generator.GenerateDescendingSortedArrayInt64(10, true))
-  fmt.Println("asc float32:", generator.GenerateAscendingSortedArrayFloat32(5, true))
-  fmt.Println("desc float32:", generator.GenerateDescendingSortedArrayFloat32(5, true))
-  fmt.Println("asc float64:", generator.GenerateAscendingSortedArrayFloat64(5, true))
-  fmt.Println("desc float64:", generator.GenerateDescendingSortedArrayFloat64(5, true))
-  fmt.Println("asc byte:", generator.GenerateAscendingSortedArrayByte(10, true))
-  fmt.Println("desc byte:", generator.GenerateDescendingSortedArrayByte(10, true))
-  fmt.Println("asc string:", generator.GenerateAscendingSortedArrayString(5, true))
-  fmt.Println("desc string:", generator.GenerateDescendingSortedArrayString(5, true))
+  cmd.GenerateInputFile(dataType, n)
+}
 
-  // ba := generator.GenerateAscendingSortedArrayByte(10000)
-  // fmt.Println(analysis.IsArraySortedAscending(ba))
-  //
-  // ba = generator.GenerateDescendingSortedArrayByte(10000)
-  // fmt.Println(analysis.IsArraySortedDescending(ba))
+// PrintGeneralHelp wypisuje generalną pomoc i sposób użycia programu.
+func PrintGeneralHelp(exitCode int) {
+  fmt.Printf("Sposób użycia:\n$ %v <cmd> [options]\n\n", os.Args[0])
+  fmt.Println("\tgenerate <typ danych> <rozmiar>\tgenerowanie plików z losowymi danymi wejściowymi")
+  fmt.Println("\thelp\t\t\t\twyświetlanie tej wiadomości")
 
-  fmt.Println("part int:", generator.GeneratePartiallySortedArrayInt(10, 33, true))
-  fmt.Println("part int32:", generator.GeneratePartiallySortedArrayInt32(10, 33, true))
-  fmt.Println("part int64:", generator.GeneratePartiallySortedArrayInt64(10, 33, true))
-  fmt.Println("part float32:", generator.GeneratePartiallySortedArrayFloat32(10, 33, true))
-  fmt.Println("part float64:", generator.GeneratePartiallySortedArrayFloat64(10, 33, true))
-  fmt.Println("part byte:", generator.GeneratePartiallySortedArrayByte(10, 33, true))
-  fmt.Println("part string:", generator.GeneratePartiallySortedArrayString(10, 33, true))
+  fmt.Println()
+  fmt.Println("Aby wyświetlić więcej informacji nt. danej komendy należy wpisać:")
+  fmt.Printf("$ %v <cmd> -help\n", os.Args[0])
+  fmt.Println()
+  fmt.Println("Przykłady:")
+  fmt.Printf("$ %v generate float32 100\n", os.Args[0])
 
-  a := generator.GenerateAscendingSortedArrayFloat32(10, true)
-  utils.SaveArray("dupa.txt", a)
+  fmt.Println(exitCode)
 
-  fh := utils.NewInputFileHandler("dupa.txt")
-  fmt.Println(fh.TryParseFloat32())
+  os.Exit(0)
 }

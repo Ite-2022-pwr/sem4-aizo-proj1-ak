@@ -36,6 +36,8 @@ func SaveArray[T constraints.Ordered](filepath string, array []T) {
     }
     wrtr.Flush()
   }
+
+  log.Println(GreenColor(fmt.Sprintf("[+] Zapisano tablicę do pliku %v", filepath)))
 }
 
 // InputFileHandler odpowiada za wczytanie i parsowanie pliku z danymi wejściowymi
@@ -85,6 +87,13 @@ func (fh *InputFileHandler) LoadData() {
     }
     fh.Data[i] = strings.TrimSpace(line)
   }
+}
+
+// GetDataCopy zwraca kopię wczytanych danych
+func (fh *InputFileHandler) GetDataCopy() []string {
+  data := make([]string, fh.DataLength)
+  copy(data, fh.Data)
+  return data
 }
 
 // TryParseInt próbuje przekonwertować dane z tekstu na int.
@@ -169,7 +178,7 @@ func (fh *InputFileHandler) TryParseByte() []byte {
   for i := 0; i < fh.DataLength; i++ {
     num, err := strconv.ParseUint(fh.Data[i], 0, 8)
     if err != nil {
-      log.Fatal(RedColor(fmt.Sprintf("[!!] Błąd konwersji: %v", fh.Data[i], err)))
+      log.Fatal(RedColor(fmt.Sprintf("[!!] Błąd konwersji '%v': %v", fh.Data[i], err)))
     }
     array[i] = byte(num)
   }
