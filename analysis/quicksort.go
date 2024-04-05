@@ -11,7 +11,7 @@ import (
 
 // QuickSortAnalysis mierzy czas sortowania szybkiego.
 // Parametr pivot musi przyjmować jedną z wartości: "lewy", "prawy", "środkowy" lub "losowy".
-func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
+func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) ([]T, float64) {
   array := sa.GetDataCopy()
 
   log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
@@ -34,7 +34,7 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
     getPivot = sort.GetPivotRandom
   default:
     log.Println(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznany typ pivota dla QuickSort: %s. Dopuszczalne: lewy, prawy, środkowy, losowy", pivotType)))
-    return nil
+    return nil, 0.0
   }
 
   prompt := utils.BlueColor(fmt.Sprintf("Sortowanie szybkie (pivot: %s)", pivotType))
@@ -43,9 +43,9 @@ func (sa *SortAnalyzer[T]) QuickSortAnalysis(pivotType string) []T {
 
   sort.QuickSort(array, 0, sa.DataLength - 1, getPivot)
 
-  utils.PrintTimeElapsed(start, prompt)
+  timeElapsed := utils.PrintTimeElapsed(start, prompt)
 
   AssertSortedAscendingArray(array)
 
-  return array
+  return array, timeElapsed
 }

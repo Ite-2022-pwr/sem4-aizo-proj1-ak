@@ -19,8 +19,11 @@ func GenerateAscendingSortedArrayInt(n int, verbose bool) []int {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = i
+    array[i] = i + intSeed
   }
 
   return array
@@ -34,8 +37,11 @@ func GenerateDescendingSortedArrayInt(n int, verbose bool) []int {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = n - i - 1
+    array[i] = n - i - 1 + intSeed
   }
 
   return array
@@ -49,8 +55,11 @@ func GenerateAscendingSortedArrayInt32(n int, verbose bool) []int32 {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = int32(i)
+    array[i] = int32(i + intSeed)
   }
 
   return array
@@ -64,8 +73,11 @@ func GenerateDescendingSortedArrayInt32(n int, verbose bool) []int32 {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = int32(n - i - 1)
+    array[i] = int32(n - i - 1 + intSeed)
   }
 
   return array
@@ -80,8 +92,11 @@ func GenerateAscendingSortedArrayInt64(n int, verbose bool) []int64 {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej rosnąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = int64(i)
+    array[i] = int64(i + intSeed)
   }
 
   return array
@@ -95,8 +110,11 @@ func GenerateDescendingSortedArrayInt64(n int, verbose bool) []int64 {
     log.Println(fmt.Sprintf("[*] Generowanie posortowanej malejąco tablicy typu %v o rozmiarze %v", utils.YellowColor(fmt.Sprintf("%T", array)), utils.YellowColor(n)))
   }
 
+  rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+  intSeed := rng.Int() % 100
+
   for i := 0; i < n; i++ {
-    array[i] = int64(n - i - 1)
+    array[i] = int64(n - i - 1 + intSeed)
   }
 
   return array
@@ -113,8 +131,7 @@ func GenerateAscendingSortedArrayFloat32(n int, verbose bool) []float32 {
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-  floatSeed := rng.Float32()
-  floatSeed -= float32(int(floatSeed))  // część po przecinku
+  floatSeed := rng.Float32() * 100
 
   for i := 0; i < n; i++ {
     array[i] = float32(i) + floatSeed
@@ -134,8 +151,7 @@ func GenerateDescendingSortedArrayFloat32(n int, verbose bool) []float32 {
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-  floatSeed := rng.Float32()
-  floatSeed -= float32(int(floatSeed))  // część po przecinku
+  floatSeed := rng.Float32() * 100
 
   for i := 0; i < n; i++ {
     array[i] = float32(n - i) - floatSeed
@@ -156,8 +172,7 @@ func GenerateAscendingSortedArrayFloat64(n int, verbose bool) []float64 {
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-  floatSeed := rng.Float64()
-  floatSeed -= float64(int(floatSeed))  // część po przecinku
+  floatSeed := rng.Float64() * 100
 
   for i := 0; i < n; i++ {
     array[i] = float64(i) + floatSeed
@@ -177,8 +192,7 @@ func GenerateDescendingSortedArrayFloat64(n int, verbose bool) []float64 {
 
   rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-  floatSeed := rng.Float64()
-  floatSeed -= float64(int(floatSeed))  // część po przecinku
+  floatSeed := rng.Float64() * 100
 
   for i := 0; i < n; i++ {
     array[i] = float64(n - i) - floatSeed

@@ -2,6 +2,7 @@ package utils
 
 import (
 	"bufio"
+	"encoding/csv"
 	"fmt"
 	"log"
 	"os"
@@ -43,6 +44,23 @@ func SaveArray[T constraints.Ordered](filepath string, array []T) {
   log.Println(GreenColor(fmt.Sprintf("[+] Zapisano tablicę do pliku %v", filepath)))
 }
 
+// SaveCSV zapisuje dane do pliku csv
+func SaveCSV(filename string, data [][]string) {
+  fh, err := os.Create(filename)
+  defer fh.Close()
+  if err != nil {
+    log.Fatal(RedColor("[!!] Nie udało się utworzyć pliku: ", filename))
+  }
+
+  wrtr := csv.NewWriter(fh)
+
+  if err = wrtr.WriteAll(data); err != nil {
+    log.Fatal(RedColor("[!!] Nie udało się zapisać danych do pliku: ", filename))
+  }
+
+  log.Println(GreenColor("[+] Zapisano dane do pliku: ", filename))
+}
+ 
 // InputFileHandler odpowiada za wczytanie i parsowanie pliku z danymi wejściowymi
 type InputFileHandler struct {
   FilePath string

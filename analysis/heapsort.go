@@ -9,7 +9,7 @@ import (
 )
 
 // HeapSortAnalysis mierzy czas sortowania przez kopcowanie.
-func (sa *SortAnalyzer[T]) HeapSortAnalysis() []T {
+func (sa *SortAnalyzer[T]) HeapSortAnalysis() ([]T, float64) {
   array := sa.GetDataCopy()
   
   log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
@@ -26,9 +26,9 @@ func (sa *SortAnalyzer[T]) HeapSortAnalysis() []T {
 
   sort.HeapSort(array)
 
-  utils.PrintTimeElapsed(start, prompt)
+  timeElapsed := utils.PrintTimeElapsed(start, prompt)
 
   AssertSortedAscendingArray(array)
 
-  return array
+  return array, timeElapsed
 }

@@ -30,6 +30,8 @@ func main() {
     ParseGenerateOptions(os.Args[2:])
   case "run":
     cmd.Run()
+  case "sizes":
+    cmd.MeasureTimesSizeDependend()
   default:
     log.Println(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
     PrintGeneralHelp(1)

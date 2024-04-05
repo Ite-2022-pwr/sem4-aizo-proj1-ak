@@ -9,7 +9,7 @@ import (
 )
 
 // InsertionSortAnalysis mierzy czas sortowania przez wstawianie.
-func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
+func (sa *SortAnalyzer[T]) InsertionSortAnalysis() ([]T, float64) {
   array := sa.GetDataCopy()
 
   log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
@@ -26,9 +26,9 @@ func (sa *SortAnalyzer[T]) InsertionSortAnalysis() []T {
 
   sort.InsertionSort(array) 
 
-  utils.PrintTimeElapsed(start, prompt)
+  timeElapsed := utils.PrintTimeElapsed(start, prompt)
 
   AssertSortedAscendingArray(array)
 
-  return array
+  return array, timeElapsed
 }

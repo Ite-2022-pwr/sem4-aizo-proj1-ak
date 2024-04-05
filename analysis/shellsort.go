@@ -11,7 +11,7 @@ import (
 
 // ShellSortAnalysis mierzy czas sortowania Shella.
 // Parametr gapCalculatingFormula musi przyjmować jedną z wartości: "shell", "franklazarus" lub "hibbard". 
-func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
+func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) ([]T, float64) {
   array := sa.GetDataCopy()
 
   log.Println("Typ danych:", utils.YellowColor(sa.DataTypyName))
@@ -32,7 +32,7 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
     gapCalculatingFormula, calculateGap = "Hibbarda", sort.CalculateHibbardGap
   default:
     log.Println(utils.RedColor(fmt.Sprintf("[!!] Błąd: Nieznana formuła wyboru odstępu: %s. Dopuszczalne: shell, franklazarus, hibbard", gapCalculatingFormula)))
-    return nil
+    return nil, 0.0
   }
  
   prompt := utils.BlueColor(fmt.Sprintf("Sortowanie Shella (wybór odstępu wg wzoru %s)", gapCalculatingFormula))
@@ -41,9 +41,9 @@ func (sa *SortAnalyzer[T]) ShellSortAnalysis(gapCalculatingFormula string) []T {
 
   sort.ShellSort(array, calculateGap)
 
-  utils.PrintTimeElapsed(start, prompt)
+  timeElapsed := utils.PrintTimeElapsed(start, prompt)
 
   AssertSortedAscendingArray(array)
 
-  return array
+  return array, timeElapsed
 }
