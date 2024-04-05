@@ -32,6 +32,8 @@ func main() {
     cmd.Run()
   case "sizes":
     cmd.MeasureTimesSizeDependend()
+  case "types":
+    cmd.AnalyzeDifferentDataTypesHeapsort()
   default:
     log.Println(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
     PrintGeneralHelp(1)
