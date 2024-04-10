@@ -24,18 +24,18 @@ func (tar TypeAnalysisResult) ToStrings() []string {
 func AnalyzeDifferentDataTypesHeapsort() {
   var results [][]string
 
-  results = append(results, AnalyzeInt().ToStrings())
-  results = append(results, AnalyzeInt32().ToStrings())
-  results = append(results, AnalyzeInt64().ToStrings())
-  results = append(results, AnalyzeFloat32().ToStrings())
-  results = append(results, AnalyzeFloat64().ToStrings())
-  results = append(results, AnalyzeByte().ToStrings())
-  results = append(results, AnalyzeString().ToStrings())
+  results = append(results, AnalyzeHeapsortInt().ToStrings())
+  results = append(results, AnalyzeHeapsortInt32().ToStrings())
+  results = append(results, AnalyzeHeapsortInt64().ToStrings())
+  results = append(results, AnalyzeHeapsortFloat32().ToStrings())
+  results = append(results, AnalyzeHeapsortFloat64().ToStrings())
+  results = append(results, AnalyzeHeapsortByte().ToStrings())
+  results = append(results, AnalyzeHeapsortString().ToStrings())
 
   utils.SaveCSV(filepath.Join(OutputDirectory, "types", "heapsort.csv"), results)
 }
 
-func AnalyzeInt() TypeAnalysisResult {
+func AnalyzeHeapsortInt() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -49,7 +49,7 @@ func AnalyzeInt() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeInt32() TypeAnalysisResult {
+func AnalyzeHeapsortInt32() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -63,7 +63,7 @@ func AnalyzeInt32() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int32", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeInt64() TypeAnalysisResult {
+func AnalyzeHeapsortInt64() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -77,7 +77,7 @@ func AnalyzeInt64() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int64", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeFloat32() TypeAnalysisResult {
+func AnalyzeHeapsortFloat32() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -91,7 +91,7 @@ func AnalyzeFloat32() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "float32", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeFloat64() TypeAnalysisResult {
+func AnalyzeHeapsortFloat64() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -105,7 +105,7 @@ func AnalyzeFloat64() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "float64", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeByte() TypeAnalysisResult {
+func AnalyzeHeapsortByte() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {
@@ -119,7 +119,7 @@ func AnalyzeByte() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "byte", AvgTime: timesSum / TestNum}
 }
 
-func AnalyzeString() TypeAnalysisResult {
+func AnalyzeHeapsortString() TypeAnalysisResult {
   var timesSum float64
 
   for i := 0; i < int(TestNum); i++ {

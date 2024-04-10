@@ -34,6 +34,8 @@ func main() {
     cmd.MeasureTimesSizeDependend()
   case "types":
     cmd.AnalyzeDifferentDataTypesHeapsort()
+  case "edge":
+    cmd.TestEdgeCases()
   default:
     log.Println(utils.RedColor(fmt.Sprintf("[!!] Nieznane polecenie: %v", os.Args[1])))
     PrintGeneralHelp(1)
