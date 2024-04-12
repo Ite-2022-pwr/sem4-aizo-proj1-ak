@@ -30,6 +30,8 @@ func main() {
     ParseGenerateOptions(os.Args[2:])
   case "run":
     cmd.Run()
+  case "interactive":
+    cmd.Menu()
   case "sizes":
     cmd.MeasureTimesSizeDependend()
   case "types":
@@ -63,6 +65,7 @@ func PrintGeneralHelp(exitCode int) {
   fmt.Println("\tverify\t\t\t\tweryfikacja poprawności zaimplementowanych algorytmów sortowania")
   fmt.Println("\tgenerate <typ danych> <rozmiar>\tgenerowanie plików z losowymi danymi wejściowymi")
   fmt.Println("\trun [options]\t\t\turuchamianie wybranego algorytmu sortowania")
+  fmt.Println("\tinteractive\t\t\ttryb interaktywny (menu)")
   fmt.Println("\thelp\t\t\t\twyświetlanie tej wiadomości")
 
   fmt.Println()

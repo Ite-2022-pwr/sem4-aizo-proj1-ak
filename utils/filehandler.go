@@ -102,8 +102,7 @@ func (fh *InputFileHandler) LoadData() {
     return
   }
 
-  fh.Data = make([]string, arraySize)
-  fh.DataLength = arraySize
+  data := make([]string, arraySize)
 
   for i := 0; i < arraySize; i++ {
     line, err = rdr.ReadString('\n')
@@ -111,8 +110,11 @@ func (fh *InputFileHandler) LoadData() {
       log.Println(RedColor(fmt.Sprintf("[!!] Błąd czytania linii '%v': %v", line, err)))
       return
     }
-    fh.Data[i] = strings.TrimSpace(line)
+    data[i] = strings.TrimSpace(line)
   }
+  fh.Data = make([]string, arraySize)
+  copy(fh.Data, data)
+  fh.DataLength = arraySize
 }
 
 // GetDataCopy zwraca kopię wczytanych danych
