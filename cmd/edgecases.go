@@ -10,15 +10,18 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj1-ak/utils"
 )
 
+// EdgeCaseResult reprezentuje uśredniony wynik pomiarów przypadku szczególnego dla danego algorytmu sortowania.
 type EdgeCaseResult struct {
   Algorithm string
   AvgTime  float64
 }
 
+// ToStrings zwraca wartości pól struktury EdgeCaseResult w postaci []string.
 func (ecr EdgeCaseResult) ToStrings() []string {
   return []string{ecr.Algorithm, fmt.Sprintf("%.3f", ecr.AvgTime)}
 }
 
+// TestEdgeCases sprawdza przypadki szczególne.
 func TestEdgeCases() {
   var results [][]string
 
@@ -79,6 +82,7 @@ func TestEdgeCases() {
   results = nil
 }
 
+// TestFullRandom mierzy czas tablicy z w pełni losowym uporządkowaniem elementów.
 func TestFullRandom(algorithm, pivot, gap string) EdgeCaseResult {
   var timesSum float64
   size := 100000
@@ -132,6 +136,7 @@ func TestFullRandom(algorithm, pivot, gap string) EdgeCaseResult {
 
 }
 
+// TestSortedAscending mierzy czasy sortowania dla tablicy posortowanej rosnąco
 func TestSortedAscending(algorithm, pivot, gap string) EdgeCaseResult {
   var timesSum float64
   size := 100000
@@ -184,6 +189,7 @@ func TestSortedAscending(algorithm, pivot, gap string) EdgeCaseResult {
   return EdgeCaseResult{Algorithm: algorithm, AvgTime: avg}
 }
 
+// TestSortedDescending mierzy czas sortowania tablicy posortowanej malejąco.
 func TestSortedDescending(algorithm, pivot, gap string) EdgeCaseResult {
   var timesSum float64
   size := 100000
@@ -237,6 +243,7 @@ func TestSortedDescending(algorithm, pivot, gap string) EdgeCaseResult {
 
 }
 
+// TestPartiallySorted mierzy czas sortowania tablicy posortowanej rosnąco w 33%.
 func TestPartiallySorted(algorithm, pivot, gap string) EdgeCaseResult {
   var timesSum float64
   size := 100000
