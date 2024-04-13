@@ -12,15 +12,20 @@ import (
 
 const arraySize = 1000000
 
+// TypeAnalysisResult to struktura przechowująca uśredniony wynik pomiarów czasu sortowania
+// dla danego typu danych.
 type TypeAnalysisResult struct {
   DataType string
   AvgTime float64
 }
 
+// ToStrings zwraca wartości pól TypeAnalysisResult w postaci []string.
 func (tar TypeAnalysisResult) ToStrings() []string {
   return []string{tar.DataType, fmt.Sprintf("%.3f", tar.AvgTime)}
 }
 
+// AnalyzeDifferentDataTypesHeapsort przeprowadza pomiary sortowania przez kopcowanie
+// dla różnych typów danych.
 func AnalyzeDifferentDataTypesHeapsort() {
   var results [][]string
 
@@ -35,6 +40,7 @@ func AnalyzeDifferentDataTypesHeapsort() {
   utils.SaveCSV(filepath.Join(OutputDirectory, "types", "heapsort.csv"), results)
 }
 
+// AnalyzeHeapsortInt przeprowadza pomiary sortowania przez kopcowanie dla typu int.
 func AnalyzeHeapsortInt() TypeAnalysisResult {
   var timesSum float64
 
@@ -49,6 +55,7 @@ func AnalyzeHeapsortInt() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortInt32 przeprowadza pomiary sortowania przez kopcowanie dla typu int32.
 func AnalyzeHeapsortInt32() TypeAnalysisResult {
   var timesSum float64
 
@@ -63,6 +70,7 @@ func AnalyzeHeapsortInt32() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int32", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortInt64 przeprowadza pomiary sortowania przez kopcowanie dla typu int64.
 func AnalyzeHeapsortInt64() TypeAnalysisResult {
   var timesSum float64
 
@@ -77,6 +85,7 @@ func AnalyzeHeapsortInt64() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "int64", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortFloat32 przeprowadza pomiary sortowania przez kopcowanie dla typu float32.
 func AnalyzeHeapsortFloat32() TypeAnalysisResult {
   var timesSum float64
 
@@ -91,6 +100,7 @@ func AnalyzeHeapsortFloat32() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "float32", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortFloat64 przeprowadza pomiary sortowania przez kopcowanie dla typu float64.
 func AnalyzeHeapsortFloat64() TypeAnalysisResult {
   var timesSum float64
 
@@ -105,6 +115,7 @@ func AnalyzeHeapsortFloat64() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "float64", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortByte przeprowadza pomiary sortowania przez kopcowanie dla typu byte.
 func AnalyzeHeapsortByte() TypeAnalysisResult {
   var timesSum float64
 
@@ -119,6 +130,7 @@ func AnalyzeHeapsortByte() TypeAnalysisResult {
   return TypeAnalysisResult{DataType: "byte", AvgTime: timesSum / TestNum}
 }
 
+// AnalyzeHeapsortString przeprowadza pomiary sortowania przez kopcowanie dla typu string.
 func AnalyzeHeapsortString() TypeAnalysisResult {
   var timesSum float64
 
