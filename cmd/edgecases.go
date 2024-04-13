@@ -68,16 +68,30 @@ func TestEdgeCases() {
   results = nil
 
   // Częściowo posortowana (w 33%)
-  results = append(results, TestPartiallySorted("heap", "", "").ToStrings())
-  results = append(results, TestPartiallySorted("quick", "lewy", "").ToStrings())
-  results = append(results, TestPartiallySorted("quick", "prawy", "").ToStrings())
-  results = append(results, TestPartiallySorted("quick", "środkowy", "").ToStrings())
-  results = append(results, TestPartiallySorted("quick", "losowy", "").ToStrings())
-  results = append(results, TestPartiallySorted("shell", "", "shell").ToStrings())
-  results = append(results, TestPartiallySorted("shell", "", "franklazarus").ToStrings())
-  results = append(results, TestPartiallySorted("insertion", "", "").ToStrings())
+  results = append(results, TestPartiallySorted33("heap", "", "").ToStrings())
+  results = append(results, TestPartiallySorted33("quick", "lewy", "").ToStrings())
+  results = append(results, TestPartiallySorted33("quick", "prawy", "").ToStrings())
+  results = append(results, TestPartiallySorted33("quick", "środkowy", "").ToStrings())
+  results = append(results, TestPartiallySorted33("quick", "losowy", "").ToStrings())
+  results = append(results, TestPartiallySorted33("shell", "", "shell").ToStrings())
+  results = append(results, TestPartiallySorted33("shell", "", "franklazarus").ToStrings())
+  results = append(results, TestPartiallySorted33("insertion", "", "").ToStrings())
 
-  utils.SaveCSV(filepath.Join(OutputDirectory, "edge_cases", "partially.csv"), results)
+  utils.SaveCSV(filepath.Join(OutputDirectory, "edge_cases", "partially33.csv"), results)
+
+  results = nil
+
+  // Częściowo posortowana (w 66%)
+  results = append(results, TestPartiallySorted66("heap", "", "").ToStrings())
+  results = append(results, TestPartiallySorted66("quick", "lewy", "").ToStrings())
+  results = append(results, TestPartiallySorted66("quick", "prawy", "").ToStrings())
+  results = append(results, TestPartiallySorted66("quick", "środkowy", "").ToStrings())
+  results = append(results, TestPartiallySorted66("quick", "losowy", "").ToStrings())
+  results = append(results, TestPartiallySorted66("shell", "", "shell").ToStrings())
+  results = append(results, TestPartiallySorted66("shell", "", "franklazarus").ToStrings())
+  results = append(results, TestPartiallySorted66("insertion", "", "").ToStrings())
+
+  utils.SaveCSV(filepath.Join(OutputDirectory, "edge_cases", "partially66.csv"), results)
 
   results = nil
 }
@@ -105,6 +119,7 @@ func TestFullRandom(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "quick":
+    algorithm += "_" + pivot
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateRandomArrayInt(size, 1000, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -116,6 +131,7 @@ func TestFullRandom(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "shell":
+    algorithm += "_" + gap
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateRandomArrayInt(size, 1000, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -159,6 +175,7 @@ func TestSortedAscending(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "quick":
+    algorithm += "_" + pivot
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateAscendingSortedArrayInt(size, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -170,6 +187,7 @@ func TestSortedAscending(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "shell":
+    algorithm += "_" + gap
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateAscendingSortedArrayInt(size, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -212,6 +230,7 @@ func TestSortedDescending(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "quick":
+    algorithm += "_" + pivot
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateDescendingSortedArrayInt(size, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -223,6 +242,7 @@ func TestSortedDescending(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "shell":
+    algorithm += "_" + gap
     for i := 0; i < int(TestNum); i++ {
       array := generator.GenerateAscendingSortedArrayInt(size, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -243,8 +263,8 @@ func TestSortedDescending(algorithm, pivot, gap string) EdgeCaseResult {
 
 }
 
-// TestPartiallySorted mierzy czas sortowania tablicy posortowanej rosnąco w 33%.
-func TestPartiallySorted(algorithm, pivot, gap string) EdgeCaseResult {
+// TestPartiallySorted33 mierzy czas sortowania tablicy posortowanej rosnąco w 33%.
+func TestPartiallySorted33(algorithm, pivot, gap string) EdgeCaseResult {
   var timesSum float64
   size := 100000
 
@@ -266,6 +286,7 @@ func TestPartiallySorted(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "quick":
+    algorithm += "_" + pivot
     for i := 0; i < int(TestNum); i++ {
       array := generator.GeneratePartiallySortedArrayInt(size, 33, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -277,6 +298,7 @@ func TestPartiallySorted(algorithm, pivot, gap string) EdgeCaseResult {
       timesSum += t
     }
   case "shell":
+    algorithm += "_" + gap
     for i := 0; i < int(TestNum); i++ {
       array := generator.GeneratePartiallySortedArrayInt(size, 33, true)
       sortAnalyzer := analysis.NewSortAnalyzer(array)
@@ -295,4 +317,59 @@ func TestPartiallySorted(algorithm, pivot, gap string) EdgeCaseResult {
   avg := timesSum / TestNum
   return EdgeCaseResult{Algorithm: algorithm, AvgTime: avg}
 
+}
+
+// TestPartiallySorted66 mierzy czas sortowania tablicy posortowanej rosnąco w 66%.
+func TestPartiallySorted66(algorithm, pivot, gap string) EdgeCaseResult {
+  var timesSum float64
+  size := 100000
+
+  switch algorithm {
+  case "insertion":
+    for i := 0; i < int(TestNum); i++ {
+      array := generator.GeneratePartiallySortedArrayInt(size, 66, true)
+      sortAnalyzer := analysis.NewSortAnalyzer(array)
+      log.Println(utils.BlueColor(fmt.Sprintf("[*] Pomiar %v/%v", i + 1, TestNum)))
+      _, t := sortAnalyzer.InsertionSortAnalysis()
+      timesSum += t
+    }
+  case "heap":
+    for i := 0; i < int(TestNum); i++ {
+      array := generator.GeneratePartiallySortedArrayInt(size, 66, true)
+      sortAnalyzer := analysis.NewSortAnalyzer(array)
+      log.Println(utils.BlueColor(fmt.Sprintf("[*] Pomiar %v/%v", i + 1, TestNum)))
+      _, t := sortAnalyzer.HeapSortAnalysis()
+      timesSum += t
+    }
+  case "quick":
+    algorithm += "_" + pivot
+    for i := 0; i < int(TestNum); i++ {
+      array := generator.GeneratePartiallySortedArrayInt(size, 66, true)
+      sortAnalyzer := analysis.NewSortAnalyzer(array)
+      log.Println(utils.BlueColor(fmt.Sprintf("[*] Pomiar %v/%v", i + 1, TestNum)))
+      a, t := sortAnalyzer.QuickSortAnalysis(pivot)
+      if a == nil {
+        return EdgeCaseResult{}
+      }
+      timesSum += t
+    }
+  case "shell":
+    algorithm += "_" + gap
+    for i := 0; i < int(TestNum); i++ {
+      array := generator.GeneratePartiallySortedArrayInt(size, 66, true)
+      sortAnalyzer := analysis.NewSortAnalyzer(array)
+      log.Println(utils.BlueColor(fmt.Sprintf("[*] Pomiar %v/%v", i + 1, TestNum)))
+      a, t := sortAnalyzer.ShellSortAnalysis(gap)
+      if a == nil {
+        return EdgeCaseResult{}
+      }
+      timesSum += t
+    }
+  default:
+    log.Println(utils.RedColor("[!!] Nieznany algorytm sortowania: ", algorithm))
+    return EdgeCaseResult{}
+  }
+
+  avg := timesSum / TestNum
+  return EdgeCaseResult{Algorithm: algorithm, AvgTime: avg}
 }

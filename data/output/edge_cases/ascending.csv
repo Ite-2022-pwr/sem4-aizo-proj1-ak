@@ -1,8 +1,8 @@
-heap,6.312
-quick,1197.100
-quick,1178.029
-quick,0.855
-quick,2.807
-shell,1.188
-shell,1.219
-insertion,0.082
+heap,6.249
+quick_lewy,1186.927
+quick_prawy,1174.553
+quick_środkowy,0.849
+quick_losowy,2.821
+shell_shell,1.155
+shell_franklazarus,1.153
+insertion,0.079
