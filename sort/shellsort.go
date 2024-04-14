@@ -44,6 +44,7 @@ func CalculateFrankLazarusGap(n, k int) int {
 
 // CalculateHibbardGap oblicza odsęp zgodnie ze wzorem: 2^k - 1.
 // Autor: Hibbard, 1963r.
-func CalculateHibbardGap(_, k int) int {
-  return int(math.Pow(2, float64(k))) - 1
+func CalculateHibbardGap(n, k int) int {
+  return n / (int(math.Pow(2, float64(k))) - 1)
 }
+
