@@ -57,19 +57,19 @@ $ ./aizo1 run -alg=quick -type=string -pivot=prawy -input-file=data/input/input_
 Sposób użycia: ./aizo1 run [options]
 
   -alg string
-        algorytm sortowania (insertion, heap, shell, quick) [WYMAGANY]
+        algorytm sortowania (insertion, heap, shell, quick). [WYMAGANY]
   -gap string
-        jakiej metody obliczania odstępu w sortowaniu Shella użyć (shell, franklazarus, hibbard - domyślnie shell) (default "shell")
+        jakiej metody obliczania odstępu w sortowaniu Shella użyć: shell, franklazarus, hibbard. (default "shell")
   -generate int
-        ile liczb do wygenerowania (domyślnie 1000) (default 1000)
+        ile liczb do wygenerowania. (default 1000)
   -help
         wyświetlanie tej wiadomości
   -input-file string
-        czy pobrać dane wejściowe z pliku i jakiego (zamiast generate)
+        czy pobrać dane wejściowe z pliku i jakiego (zamiast generate).
   -pivot string
-        jakiego pivota do sortowania szybkiego użyć (lewy, prawy, środkowy, losowy - domyślnie lewy) (default "lewy")
+        jakiego pivota do sortowania szybkiego użyć: lewy, prawy, środkowy, losowy. (default "lewy")
   -save
-        czy zapisać wygenerowane dane do pliku
+        czy zapisać wygenerowane dane do pliku.
   -type string
-        typ danych (int, int32, int64, float32, float64, byte, string) [WYMAGANY]
+        typ danych (int, int32, int64, float32, float64, byte, string). [WYMAGANY]
 ```
